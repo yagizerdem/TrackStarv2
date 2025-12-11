@@ -1,9 +1,9 @@
 import { BrowserWindow, app } from "electron";
+import * as path from "path";
 
 export default class Main {
   static mainWindow: Electron.BrowserWindow;
   static application: Electron.App;
-  static BrowserWindow;
   private static onWindowAllClosed() {
     if (process.platform !== "darwin") {
       Main.application.quit();
@@ -16,7 +16,14 @@ export default class Main {
   }
 
   private static onReady() {
-    Main.mainWindow = new Main.BrowserWindow({ width: 800, height: 600 });
+    Main.mainWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      frame: false,
+      webPreferences: {
+        preload: path.join(__dirname, "preload.js"),
+      },
+    });
 
     if (!app.isPackaged) {
       // dev
@@ -27,12 +34,11 @@ export default class Main {
     Main.mainWindow.on("closed", Main.onClose);
   }
 
-  static main(app: Electron.App, browserWindow: typeof BrowserWindow) {
+  static main(app: Electron.App) {
     // we pass the Electron.App object and the
     // Electron.BrowserWindow into this function
     // so this class has no dependencies. This
     // makes the code easier to write tests for
-    Main.BrowserWindow = browserWindow;
     Main.application = app;
     Main.application.on("window-all-closed", Main.onWindowAllClosed);
     Main.application.on("ready", Main.onReady);

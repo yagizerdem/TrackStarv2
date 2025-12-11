@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
+var path = require("path");
 var Main = /** @class */ (function () {
     function Main() {
     }
@@ -14,7 +15,14 @@ var Main = /** @class */ (function () {
         Main.mainWindow = null;
     };
     Main.onReady = function () {
-        Main.mainWindow = new Main.BrowserWindow({ width: 800, height: 600 });
+        Main.mainWindow = new electron_1.BrowserWindow({
+            width: 800,
+            height: 600,
+            frame: false,
+            webPreferences: {
+                preload: path.join(__dirname, "preload.js"),
+            },
+        });
         if (!electron_1.app.isPackaged) {
             // dev
             Main.mainWindow.loadURL("http://localhost:5173/");
@@ -24,12 +32,11 @@ var Main = /** @class */ (function () {
         }
         Main.mainWindow.on("closed", Main.onClose);
     };
-    Main.main = function (app, browserWindow) {
+    Main.main = function (app) {
         // we pass the Electron.App object and the
         // Electron.BrowserWindow into this function
         // so this class has no dependencies. This
         // makes the code easier to write tests for
-        Main.BrowserWindow = browserWindow;
         Main.application = app;
         Main.application.on("window-all-closed", Main.onWindowAllClosed);
         Main.application.on("ready", Main.onReady);
