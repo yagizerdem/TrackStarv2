@@ -1,11 +1,12 @@
+import { AppLayout } from "../layout/app-layout";
 import { DefaultLayout } from "../layout/default-layout";
 
 export function HomePage() {
   return (
     <DefaultLayout>
-      <div className="w-full h-full  overflow-auto text-foreground">
+      <AppLayout>
         <div>hoem </div>
-      </div>
+      </AppLayout>
     </DefaultLayout>
   );
 }

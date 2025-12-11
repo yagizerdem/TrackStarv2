@@ -17,7 +17,7 @@ export function Frame() {
   }
 
   return (
-    <div className="w-full h-12 bg-card drag-area cursor-pointer flex items-center justify-between px-4">
+    <div className="w-full h-12 bg-secondary drag-area cursor-pointer flex items-center justify-between px-4">
       <div>
         <img src={trackStarIcon} alt="TrackStar Icon" className="w-6 h-6" />
       </div>
