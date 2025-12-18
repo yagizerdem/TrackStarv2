@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from "react";
-import { Frame } from "../components/layout/common/frame";
+import { Frame } from "../components/layout/default/frame";
 import { useTheme } from "../providers/theme-provider";
-import { Header } from "../components/layout/common/header";
+import { Header } from "../components/layout/default/header";
 
 interface DefaultLayoutProps {
   children?: ReactNode;

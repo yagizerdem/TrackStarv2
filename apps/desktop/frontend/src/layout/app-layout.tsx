@@ -1,10 +1,12 @@
 import { type ReactNode } from "react";
 import { HorizontalSplitPane } from "../components/ui/horizontal-splitpane";
 import { NavigationManager } from "../components/layout/app/navigation-manager";
+import { LoaderPanel } from "../components/common/loader-panel";
 
 export function AppLayout({ children }: { children: ReactNode }) {
   return (
     <div className="w-full h-full flex flex-row text-foreground ">
+      <LoaderPanel />
       <HorizontalSplitPane
         leftPanelMinSize={100}
         leftPanelMaxSize={200}
