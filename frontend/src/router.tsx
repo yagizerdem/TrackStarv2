@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { HomePage } from "./pages/home";
+import { AccountPage } from "./pages/account";
 
 export const router = createBrowserRouter([
   {
@@ -9,5 +10,9 @@ export const router = createBrowserRouter([
   {
     path: "/home",
     element: <HomePage />,
+  },
+  {
+    path: "/account",
+    element: <AccountPage />,
   },
 ]);

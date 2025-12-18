@@ -7,3 +7,7 @@ contextBridge.exposeInMainWorld("windowController", {
   maximize: () => ipcRenderer.invoke("windowController:maximize"),
   close: () => ipcRenderer.invoke("windowController:close"),
 });
+
+contextBridge.exposeInMainWorld("accountController", {
+  createAccount: () => ipcRenderer.invoke("accountController:createAccount"),
+});

@@ -12,7 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "electron": "^39.2.5"
+    "electron": "^39.2.5",
+    "open": "^11.0.0"
   },
   "devDependencies": {
     "typescript": "^5.9.3"

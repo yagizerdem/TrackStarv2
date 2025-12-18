@@ -1,8 +1,11 @@
 import { Label } from "@radix-ui/react-label";
 import { Button } from "../../ui/button";
 import { DownloadIcon, SettingsIcon, UploadIcon } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export function NavigationManager() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full h-full flex flex-col bg-background  overflow-hidden">
       <div className=" flex-1 flex-col bg-background  overflow-y-auto">
@@ -10,6 +13,7 @@ export function NavigationManager() {
           <Button
             variant={"ghost"}
             className=" w-full h-full bg-secondary cursor-pointer rounded-md "
+            onMouseUp={() => navigate("/home")}
           >
             <Label className="font-bold text-md">Home</Label>
           </Button>
@@ -34,6 +38,7 @@ export function NavigationManager() {
           <Button
             variant={"ghost"}
             className=" w-full h-full bg-secondary cursor-pointer rounded-md "
+            onMouseUp={() => navigate("/account")}
           >
             <Label className="font-bold text-md">Account</Label>
           </Button>
